@@ -11,7 +11,6 @@ class ContactPayScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         automaticallyImplyLeading: true,
         leadingWidth: 25,
@@ -55,41 +54,46 @@ class ContactPayScreen extends StatelessWidget {
           SizeConstant.getWidthSpace(5),
         ],
       ),
-      bottomNavigationBar: Padding(
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        child: Row(
+        child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(40), color: Colors.blue),
-              child: const Text(
-                "Pay",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizeConstant.getWidthSpace(10),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(40), color: Colors.blue),
-              child: const Text(
-                "Request",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizeConstant.getWidthSpace(10),
-            Flexible(
-              child: TextField(
-                decoration: InputDecoration(
-                    contentPadding: EdgeInsets.zero,
-                    filled: true,
-                    fillColor: Colors.grey.shade200,
-                    border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(50)),
-                    hintText: "   Message....",
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    suffix: const InkWell(
-                      child: Icon(Icons.send_outlined),
-                    )),
-              ),
+            const Spacer(),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(40), color: Colors.blue),
+                  child: const Text(
+                    "Pay",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizeConstant.getWidthSpace(10),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(40), color: Colors.blue),
+                  child: const Text(
+                    "Request",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizeConstant.getWidthSpace(10),
+                Flexible(
+                  child: TextField(
+                    decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+                        filled: true,
+                        fillColor: Colors.grey.shade200,
+                        border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(50)),
+                        hintText: " Message....",
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        suffix: const InkWell(
+                          child: Icon(Icons.send_outlined),
+                        )),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

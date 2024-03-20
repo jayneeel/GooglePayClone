@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gpay_clone/constants/constant_colors.dart';
+import 'package:gpay_clone/constants/constant_fonts.dart';
 import 'package:gpay_clone/constants/constant_size.dart';
 import 'package:gpay_clone/constants/constants.dart';
 import 'package:gpay_clone/widgets/action_button.dart';
@@ -48,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const OfferRewardsSection()
+                const ManageMoneySection()
               ],
             ),
           )),
@@ -56,64 +57,60 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class OfferRewardsSection extends StatelessWidget {
-  const OfferRewardsSection({
+class ManageMoneySection extends StatelessWidget {
+  const ManageMoneySection({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
+    return const Padding(
+      padding: EdgeInsets.all(14),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Offers & rewards",
+          Text(
+            "Manage your moneys",
             style: TextStyle(
               fontSize: 26,
               color: ConstantColors.blackColor,
             ),
           ),
-          const Text(
-            "Manage your money",
-            style: TextStyle(
-              fontSize: 26,
-              color: ConstantColors.blackColor,
-            ),
+          ManageMoneyTile(title: "Check your CIBIL Score for free", icon: Icon(Icons.electric_meter_outlined, color: ConstantColors.primaryBlueColor,),),
+          SizedBox(height: 10,),
+          ManageMoneyTile(title: "See transaction history", icon: Icon(Icons.restore, color: ConstantColors.primaryBlueColor,),),
+          SizedBox(height: 10,),
+          ManageMoneyTile(title: "Check bank balance", icon: Icon(Icons.account_balance_outlined, color: ConstantColors.primaryBlueColor,),),
+          SizedBox(height: 10,),
+        ],
+      ),
+    );
+  }
+}
+
+class ManageMoneyTile extends StatelessWidget {
+  const ManageMoneyTile({
+    super.key, required this.title, required this.icon,
+  });
+  final String title;
+  final Icon icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(14),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              icon,
+              SizeConstant.getWidthSpace(10),
+              Text(title, style: const TextStyle(fontFamily: ConstantFonts.googleSansMedium, fontSize: 16),),
+            ],
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            decoration: BoxDecoration(color: const Color(0xFFF6F7FB), borderRadius: BorderRadius.circular(30)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.credit_card,
-                      color: Color(0xFF0B56CD),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color(0xFFC1ECCE),
-                      ),
-                      child: const Text("₹500 offer"),
-                    )
-                  ],
-                ),
-                SizeConstant.getHeightSpace(10),
-                const Text("Get a credit card"),
-                const Text("Save up to ₹12,000 yearly"),
-                const Text(
-                  "Apply now",
-                  style: TextStyle(color: Color(0xFF0B56CD)),
-                ),
-              ],
-            ),
-          ),
+          const Icon(Icons.arrow_forward_ios, color: Colors.black87,)
         ],
       ),
     );
@@ -130,7 +127,7 @@ class RechargeCategorySection extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           BillRechargeButton(
             iconData: Icons.mobile_friendly,
